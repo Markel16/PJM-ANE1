@@ -29,4 +29,8 @@ public class UserRowUI : MonoBehaviour
         btnDelete.onClick.RemoveAllListeners();
         btnDelete.onClick.AddListener(() => _ui.RequestDeleteUser(_userId, this));
     }
+    public void deleteUser() 
+    {
+        Destroy(gameObject);
+    }
 }

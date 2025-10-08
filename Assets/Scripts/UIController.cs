@@ -40,17 +40,17 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        // Asignar eventos a los botones
+        
         addButton.onClick.AddListener(OnAddUser);
         listAllButton.onClick.AddListener(RefreshListAll);
         searchByIdButton.onClick.AddListener(OnSearchById);
         showOldestButton.onClick.AddListener(OnShowOldest);
 
-        // Ocultar panel de eliminación y toast al inicio
+        
         deleteModal.SetActive(false);
         toastGroup.alpha = 0f;
 
-        // Asegurarse de que el campo nombre tenga límite si no se puso en el Inspector
+        
         if (nameInput != null && nameInput.characterLimit == 0)
             nameInput.characterLimit = 24;
     }
@@ -74,7 +74,7 @@ public class UIController : MonoBehaviour
             return;
         }
 
-        // Añadir usuario a la lista (repositorio)
+        
         var user = RepositorioUser.Instance.AddUser(name, age);
 
         // Mensaje y limpieza
@@ -132,11 +132,11 @@ public class UIController : MonoBehaviour
     // -------------------- RENDERIZAR LISTA --------------------
     private void RenderList(List<User> users)
     {
-        // Limpia todos los elementos actuales
+        
         for (int i = listContent.childCount - 1; i >= 0; i--)
             Destroy(listContent.GetChild(i).gameObject);
 
-        // Crea una fila por cada usuario
+        
         foreach (var u in users)
         {
             var go = Instantiate(userRowPrefab, listContent);
@@ -153,7 +153,7 @@ public class UIController : MonoBehaviour
         deleteSlider.value = 0f;
         deleteModal.SetActive(true);
 
-        // Limpiar y volver a asignar listeners
+        
         confirmDeleteButton.onClick.RemoveAllListeners();
         cancelDeleteButton.onClick.RemoveAllListeners();
 
